@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/items/{itemId}',            [ItemController::class, 'viewItem']);
+Route::post('/items/{itemId}/addToCart', [ItemController::class, 'addToCart']);
+Route::get('/cart',                      [ItemController::class, 'viewCart']);
+Route::post('/purchase',                 [ItemController::class, 'purchase']);
+
+
